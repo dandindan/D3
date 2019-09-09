@@ -29,3 +29,14 @@ svg.append('line')
 .attr('y2',120)
 .attr('stroke','red')
 .attr('stroke-width', 7 );
+
+svg.append('text')
+.attr('x',25)
+.attr('y',150)
+.attr('fill' ,'#006cff')
+.text('Hello, Wold!')
+.style('font-family','arial')
+.style('font-size',30)
+.style('font-weight','bold')
+.style('text-decoration', 'underline');
+
