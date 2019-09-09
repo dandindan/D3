@@ -5,16 +5,18 @@ const svg = canvas.append('svg')
 .attr('height', 600)
 .attr('width', 600);
 
-//Append shapes to svg conntainer
+const group = svg.append('g')
+    .attr('transform','translate(50, 50)');
 
-svg.append('rect')
+//Append shapes to svg conntainer
+group.append('rect')
 .attr('height',100)
 .attr('width', 100)
 .attr('x',20)
 .attr('y',20)
 .attr('fill' ,'purple');
 
-svg.append('circle')
+group.append('circle')
 .attr('r',50)
 .attr('cx',220)
 .attr('cy',70)
@@ -22,7 +24,7 @@ svg.append('circle')
 .attr('stroke',"green")
 .attr('stroke-width', 10 );
 
-svg.append('line')
+group.append('line')
 .attr('x1',300)
 .attr('x2',350)
 .attr('y1',20)
@@ -32,11 +34,11 @@ svg.append('line')
 
 svg.append('text')
 .attr('x',25)
-.attr('y',150)
+.attr('y',250)
 .attr('fill' ,'#006cff')
 .text('Hello, Wold!')
-.style('font-family','arial')
-.style('font-size',30)
+.style('font-family','Rage')
+.style('font-size',50)
 .style('font-weight','bold')
 .style('text-decoration', 'underline');
 
