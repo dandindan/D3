@@ -12,6 +12,9 @@
          .paddingInner(0.2)
          .paddingOuter(0.2);
 
+     const min = d3.min(data, d => d.order);
+     const max = d3.max(data, d => d.order);
+     const extent = d3.extent(data, d => d.order);
 
      // join the data to he rects
      const rects = svg.selectAll('rect')
