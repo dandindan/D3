@@ -2,6 +2,15 @@
      .append('svg')
      .attr('width', 600)
      .attr('height', 600);
+    
+ const margin = {top:20, right:20, bottom:100, left:100};
+ const graphWidth = 600- margin.left - margin.right;
+ const graphHeight = 600 - margin.top - margin.bottom;
+
+const graph = svg.append('g')
+    .attr('width', graphWidth)
+    .attr('height', graphHeight)
+    .attr('transform', `translate(${margin.left},${margin.top})`)
 
  d3.json('menu.json').then(data => {
 
@@ -20,7 +29,7 @@
      const extent = d3.extent(data, d => d.order);
 
      // join the data to he rects
-     const rects = svg.selectAll('rect')
+     const rects = graph.selectAll('rect')
          .data(data)
 
 
