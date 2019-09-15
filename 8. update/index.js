@@ -46,6 +46,11 @@ const update = (data) => {
   const rects = graph.selectAll('rect')
     .data(data);
 
+  console.log(rects);
+
+  // remove unwanted rects
+  rects.exit().remove();
+
   // update the domains
   y.domain([0, d3.max(data, d => d.orders)]);
   x.domain(data.map(item => item.name));
@@ -79,5 +84,10 @@ db.collection('dishes').get().then(res => {
   });
 
   update(data);
+
+  d3.interval(() => {
+    data.pop();
+    update(data)
+  }, 3000);
   
 });
