@@ -46,30 +46,25 @@ const update = (data) => {
   const rects = graph.selectAll('rect')
     .data(data);
 
-  console.log(rects);
-
-  // remove unwanted rects
-  rects.exit().remove();
-
   // update the domains
-  y.domain([0, d3.max(data, d => d.orders)]);
+  y.domain([0, d3.max(data, d => d.order)]);
   x.domain(data.map(item => item.name));
 
   // add attrs to rects already in the DOM
   rects.attr('width', x.bandwidth)
-    .attr("height", d => graphHeight - y(d.orders))
+    .attr("height", d => graphHeight - y(d.order))
     .attr('fill', 'orange')
     .attr('x', d => x(d.name))
-    .attr('y', d => y(d.orders));
+    .attr('y', d => y(d.order));
 
   // append the enter selection to the DOM
   rects.enter()
     .append('rect')
       .attr('width', x.bandwidth)
-      .attr("height", d => graphHeight - y(d.orders))
+      .attr("height", d => graphHeight - y(d.order))
       .attr('fill', 'orange')
       .attr('x', (d) => x(d.name))
-      .attr('y', d => y(d.orders));
+      .attr('y', d => y(d.order));
 
   xAxisGroup.call(xAxis);
   yAxisGroup.call(yAxis);
@@ -84,10 +79,5 @@ db.collection('dishes').get().then(res => {
   });
 
   update(data);
-
-  d3.interval(() => {
-    data.pop();
-    update(data)
-  }, 3000);
   
 });
