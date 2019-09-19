@@ -39,7 +39,7 @@ const yAxis = d3.axisLeft(y)
   .ticks(3)
   .tickFormat(d => d + ' order');
 
-  const t = d3.transition().duration(500);
+  const t = d3.transition().duration(1500);
 // the update function
 const update = (data) => {
 
@@ -74,6 +74,7 @@ const update = (data) => {
       .attr('y', d => graphHeight)
       .merge(rects)
       .transition(t)
+        .attrTween('width', widthTween)
         .attr("height", d => graphHeight - y(d.order))
         .attr('y', d => y(d.order));
 
@@ -110,3 +111,12 @@ db.collection('dishes').onSnapshot(res => {
   update(data);
 
 });
+
+// Tweens
+const widthTween = (d) => {
+  let i = d3.interpolate(0, x.bandwidth());
+  return function(t){
+
+    return i(t);
+  }
+};
