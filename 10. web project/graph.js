@@ -18,7 +18,7 @@ const pie = d3.pie()
 
 const arcPath = d3.arc()
   .outerRadius(dims.radius)
-  .innerRadius(dims.radius / 2);
+  .innerRadius(dims.radius/3);
 
 // ordianl colour scale
 const colour = d3.scaleOrdinal(d3["schemeCategory10"]);
@@ -46,8 +46,8 @@ const update = (data) => {
     .append('path')
       .attr('class', 'arc') 
  //   .attr('d', arcPath)
-      .attr('stroke', '#fff')
-      .attr('stroke-width', 3)
+      .attr('stroke', '#000')
+      .attr('stroke-width', 1)
       .attr('fill', d => colour(d.data.name))
       .transition().duration(1750).attrTween("d", arcTweenEnter);
 
