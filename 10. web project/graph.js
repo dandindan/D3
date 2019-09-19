@@ -21,7 +21,7 @@ const arcPath = d3.arc()
   .innerRadius(dims.radius / 2);
 
 // ordianl colour scale
-const colour = d3.scaleOrdinal(d3["schemeSet3"]);
+const colour = d3.scaleOrdinal(d3["schemeCategory10"]);
 
 // update function
 const update = (data) => {
