@@ -33,7 +33,14 @@ const update = (data) => {
   const paths = graph.selectAll('path')
     .data(pie(data));
 
-  console.log(paths);
+ // handle the exit selection
+    paths.exit().remove();   
+
+ // handle the current DOM path update
+ 
+    paths.attr('d', arcPath);
+
+//   console.log(paths);
 
   paths.enter()
     .append('path')
