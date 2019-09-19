@@ -23,11 +23,27 @@ const arcPath = d3.arc()
 // ordianl colour scale
 const colour = d3.scaleOrdinal(d3["schemeCategory10"]);
 
+// legend setup
+const legendGroup = svg.append('g')
+  .attr('transform', `translate(${dims.width + 40}, 10)`)
+
+const legend = d3.legendColor()
+  .shape('path', d3.symbol().type(d3.symbolCircle)())
+  .shapePadding(15)
+  .scale(colour)
+//   .legendSize.scale(10)
+
 // update function
 const update = (data) => {
 
   // update colour scale domain
   colour.domain(data.map(d => d.name));
+
+   // update legend
+   legendGroup.call(legend);
+   legendGroup.selectAll('text')
+    .attr('fill', 'white')
+    .style('font-size',20);
   
   // join enhanced (pie) data to path elements
   const paths = graph.selectAll('path')
