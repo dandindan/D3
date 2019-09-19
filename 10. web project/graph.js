@@ -1,6 +1,6 @@
 const dims = { height: 300, width: 300, radius: 150 };
 const cent = { x: (dims.width / 2 + 5), y: (dims.height / 2 + 5)};
-// #58
+// #60
 // create svg container
 const svg = d3.select('.canvas')
   .append('svg')
@@ -34,11 +34,15 @@ const update = (data) => {
     .data(pie(data));
 
  // handle the exit selection
-    paths.exit().remove();   
+    paths.exit()
+    .transition().duration(750)
+    .attrTween("d", arcTweenExit)
+    .remove();   
 
  // handle the current DOM path update
- 
-    paths.attr('d', arcPath);
+    paths.transition().duration(1750)
+    .attrTween("d", arcTweenUpdate);
+    // paths.attr('d', arcPath);
 
 //   console.log(paths);
 
@@ -90,5 +94,27 @@ const arcTweenEnter = (d) => {
     return function(t) {
       d.startAngle = i(t);
       return arcPath(d);
+    };
+  };
+  const arcTweenExit = (d) => {
+    var i = d3.interpolate(d.startAngle, d.endAngle);
+  
+    return function(t) {
+      d.startAngle = i(t);
+      return arcPath(d);
+    };
+  };
+  
+  // use function keyword to allow use of 'this'
+  function arcTweenUpdate(d) {
+    console.log(this._current, d);
+    // interpolate between the two objects
+    var i = d3.interpolate(this._current, d);
+    // update the current prop with new updated data
+    this._current = i(1);
+  
+    return function(t) {
+      // i(t) returns a value of d (data object) which we pass to arcPath
+      return arcPath(i(t));
     };
   };
