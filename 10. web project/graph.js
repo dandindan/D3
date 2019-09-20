@@ -1,6 +1,6 @@
 const dims = { height: 300, width: 300, radius: 150 };
 const cent = { x: (dims.width / 2 + 5), y: (dims.height / 2 + 5)};
-// #60
+// #67 - https://github.com/iamshaunjp/data-ui-with-d3-firebase/tree/lesson-67
 // create svg container
 const svg = d3.select('.canvas')
   .append('svg')
@@ -32,6 +32,18 @@ const legend = d3.legendColor()
   .shapePadding(15)
   .scale(colour)
 //   .legendSize.scale(10)
+
+// tooltips
+const tip = d3.tip()
+  .attr('class', 'tip card')
+  .html(d => {
+    let content = `<div class="name">item: ${d.data.name}</div>`;
+    content += `<div class="cost">cost: $${d.data.cost}</div>`;
+    content += `<div class="delete">Click slice to delete</div>`
+    return content;
+  });
+
+graph.call(tip);
 
 // update function
 const update = (data) => {
@@ -71,7 +83,21 @@ const update = (data) => {
       .attr('fill', d => colour(d.data.name))
       .transition().duration(1750).attrTween("d", arcTweenEnter);
 
+
+ // add events
+ graph.selectAll('path')
+ .on('mouseover', (d,i,n) => {
+   tip.show(d, n[i]);
+   handleMouseOver(d, i, n);
+ })
+ .on('mouseout', (d,i,n) => {
+   tip.hide();
+   handleMouseOut(d, i, n);
+ })
+ .on('click', handleClick);
+
 };
+
 
 // data array and firestore
 var data = [];
@@ -123,7 +149,7 @@ const arcTweenEnter = (d) => {
   
   // use function keyword to allow use of 'this'
   function arcTweenUpdate(d) {
-    console.log(this._current, d);
+    // console.log(this._current, d);
     // interpolate between the two objects
     var i = d3.interpolate(this._current, d);
     // update the current prop with new updated data
@@ -134,3 +160,23 @@ const arcTweenEnter = (d) => {
       return arcPath(i(t));
     };
   };
+
+  // event handlers
+const handleMouseOver = (d,i,n) => {
+  //console.log(n[i]);
+  d3.select(n[i])
+    .transition('changeSliceFill').duration(300)
+      .attr('fill', '#fff');
+};
+
+const handleMouseOut = (d,i,n) => {
+  //console.log(n[i]);
+  d3.select(n[i])
+    .transition('changeSliceFill').duration(300)
+      .attr('fill', colour(d.data.name));
+};
+
+const handleClick = (d) => {
+  const id = d.data.id;
+  db.collection('expenses').doc(id).delete();
+};
