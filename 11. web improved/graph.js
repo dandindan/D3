@@ -25,7 +25,7 @@ const arcPath = d3.arc()
 
   const arcPathOver = d3.arc()
   .outerRadius(dims.radius +10)
-  .innerRadius(dims.radius/3 -10);
+  .innerRadius(dims.radius/3 -20);
 
 // ordianl colour scale
 const colour = d3.scaleOrdinal(d3["schemeCategory10"]);
@@ -179,7 +179,9 @@ const handleMouseOver = (d,i,n) => {
       .ease(d3.easeElasticOut.amplitude(1.5).period(0.15))
       .duration(1700)
       .attr('fill', d3.hsl(colour(d.data.name)).darker(0.6)) //brighter(0.5)
-      .attr('d', arcPathOver);
+      .attr('d', arcPathOver)
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 2);
 };
 
 const handleMouseOut = (d,i,n) => {
@@ -187,7 +189,9 @@ const handleMouseOut = (d,i,n) => {
   d3.select(n[i])
     .transition('changeSliceFill').duration(300)
       .attr('fill', colour(d.data.name))
-      .attr('d', arcPath);
+      .attr('d', arcPath)
+      .attr('stroke', '#000')
+      .attr('stroke-width', 1);
 };
 
 const handleClick = (d) => {
