@@ -164,6 +164,9 @@ const arcTweenEnter = (d) => {
   // event handlers
 const handleMouseOver = (d,i,n) => {
   //console.log(n[i]);
+  name.value = "";
+  cost.value = "";
+  error.textContent = "";
   d3.select(n[i])
     .transition('changeSliceFill').duration(300)
       .attr('fill', '#fff');
