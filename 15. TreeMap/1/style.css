@@ -1,0 +1,57 @@
+form, h1 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  svg, div {
+    font: 10px sans-serif;
+  }
+  div {
+    float: left;
+  }
+  .heading{
+    margin-top:4px;
+    margin-left:4px;
+    font-weight: bold;
+    font-size : 1.6em;
+    float: left;
+  }
+  .legend{
+    width:10px;
+    height:10px;
+    border: none;
+    float:left;
+    margin-left: 4px;
+  }
+  .innerRight{
+    margin-right: 4px;
+  }
+  .border{
+      margin-top: 10px;
+      border: 1px solid black;
+      width: 290px;
+      height:122px;
+      margin-bottom: 20px;
+      display: inline-block;
+  }
+  .innerLeft{
+    float:left;
+    margin-bottom: 4px;
+  }
+  .innerCenter{
+    float:center;
+    margin-left: 10px;
+    margin-bottom: 4px;
+    margin-top:4px
+  }
+  .innerRight{
+    float:right;
+    margin-bottom: 4px;
+    padding-right: 6px;
+    margin-top:4px
+  }
+  .text{
+    margin-left: 2px;
+    font-size : 10px;
+  }
+  ul {
+    list-style-type: none;
+  }

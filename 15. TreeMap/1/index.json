@@ -1,0 +1,242 @@
+{"name":"flare",
+    "children":[
+    {
+      "name":"alcohol",
+      "children":[
+          {"name": "beer coolers", "size": 50496},
+          {"name": "red wines", "size": 36424},
+          {"name": "specialty wines champagnes", "size": 11659},
+          {"name": "spirits", "size": 29069},
+          {"name": "white wines", "size":31646}
+        ]
+    },
+    {
+     "name": "babies",
+     "children": [
+      {"name": "baby accessories  ", "size": 8466},
+      {"name": "baby bath body care", "size": 8909},
+      {"name": "baby food formula", "size": 395654},
+      {"name": "diapers wipes", "size": 25714}
+     ]
+    },
+    {
+     "name": "bakery",
+     "children": [
+      {"name": "bakery desserts", "size": 36372},
+      {"name": "bread", "size": 608469},
+      {"name": "breakfast bakery", "size": 260621},
+      {"name": "buns rolls", "size": 118069},
+      {"name": "tortillas flat bread", "size": 201650}
+     ]
+    },
+    {
+       "name": "beverages",
+       "children": [
+        {"name": "cocoa drink mixes", "size": 22276},
+        {"name": "coffee", "size": 215467},
+        {"name": "energy sports drinks", "size": 108357},
+        {"name": "juice nectars", "size": 348283},
+        {"name": "refrigerated", "size": 599109},
+        {"name": "soft drinks", "size": 373816},
+        {"name": "tea", "size": 258717},
+        {"name": "water seltzer sparkling water", "size": 878150}
+    ]
+    },
+      {
+         "name": "breakfast",
+         "children": [
+          {"name": "breakfast bars pastries", "size": 75004},
+          {"name": "cereal", "size": 393787},
+          {"name": "granola", "size": 105762},
+          {"name": "hot cereal pancake mixes", "size": 164516}
+         ]
+    },
+    {
+      "name":"bulk",
+      "children":[
+        {"name":"bulk dried fruits vegetables","size":18093},
+        {"name":"bulk grains rice dried goods","size":17839}
+      ]
+    },
+    {
+      "name":"canned goods",
+      "children":[
+        {"name":"canned fruit applesauce","size":91193},
+        {"name":"canned jarred vegetables","size":309716},
+        {"name":"canned meals beans","size":282088},
+        {"name":"canned meat seafood","size":70287},
+        {"name":"soup broth bouillon","size":361573}
+      ]
+    },
+    {
+      "name":"dairy eggs",
+      "children":[
+        {"name":"butter","size":264892},
+        {"name":"cream","size":330358},
+        {"name":"eggs","size":472009},
+        {"name":"milk","size":923659},
+        {"name":"other creams cheeses","size":320827},
+        {"name":"packaged cheese","size":1021462},
+        {"name":"refrigerated pudding desserts","size":39420},
+        {"name":"soy lactose free","size":664493},
+        {"name":"specialty cheeses","size":86364},
+        {"name":"yogurt","size":1507583}
+      ]
+    },
+    {
+      "name":"deli",
+      "children":[
+        {"name":"fresh dips tapenades","size":370827},
+        {"name":"lunch meat","size":412087},
+        {"name":"prepared meals","size":103165},
+        {"name":"prepared soups salads","size":74864},
+        {"name":"tofu meat alternatives","size":134597}
+      ]
+    },
+    {
+      "name":"dry goods pasta",
+      "children":[
+        {"name":"dry pasta","size":277935},
+        {"name":"fresh pasta","size":38355},
+        {"name":"grains rice dried goods","size":150323},
+        {"name":"instant foods","size":210604},
+        {"name":"pasta sauce","size":228123}
+      ]
+    },
+    {
+      "name":"frozen",
+      "children":[
+        {"name":"frozen appetizers sides","size":203452},
+        {"name":"frozen breads doughs","size":41740},
+        {"name":"frozen breakfast","size":242492},
+        {"name":"frozen dessert","size":20241},
+        {"name":"frozen juice","size":5147},
+        {"name":"frozen meals","size":408520},
+        {"name":"frozen meat seafood","size":75083},
+        {"name":"frozen pizza","size":169879},
+        {"name":"frozen produce","size":545107},
+        {"name":"frozen vegan vegetarian","size":104096},
+        {"name":"ice cream ice","size":521101}
+      ]
+    },
+    {
+      "name":"household",
+      "children":[
+        {"name":"air fresheners candles","size":20918},
+        {"name":"cleaning products","size":124371},
+        {"name":"dish detergents","size":98797},
+        {"name":"food storage","size":68852},
+        {"name":"kitchen supplies","size":9620},
+        {"name":"laundry","size":98990},
+        {"name":"more household","size":18405},
+        {"name":"paper goods","size":255690},
+        {"name":"plates bowls cups flatware","size":45307},
+        {"name":"trash bags liners","size":33702}
+      ]
+    },
+    {
+      "name":"international",
+      "children":[
+        {"name":"asian foods","size":173614},
+        {"name":"indian foods","size":16620},
+        {"name":"kosher foods","size":12426},
+        {"name":"latino foods","size":78495}
+      ]
+    },
+    {
+      "name":"meat seafood",
+      "children":[
+        {"name":"hot dogs bacon sausage","size":318468},
+        {"name":"meat counter","size":74046},
+        {"name":"packaged meat","size":35391},
+        {"name":"packaged poultry","size":124045},
+        {"name":"packaged seafood","size":21840},
+        {"name":"poultry counter","size":134722},
+        {"name":"seafood counter","size":30726}
+      ]
+    },
+    {
+      "name":"missing",
+      "children":[
+        {"name":"missing","size":77396}
+      ]
+    },
+    {
+      "name":"other",
+      "children":[
+        {"name":"other","size":38086}
+      ]
+    },
+    {
+      "name":"household",
+      "children":[
+        {"name":"baking ingredients","size":339780},
+        {"name":"baking supplies decor","size":24786},
+        {"name":"condiments","size":231792},
+        {"name":"doughs gelatins bake mixes","size":110847},
+        {"name":"honeys syrups nectars","size":69790},
+        {"name":"marinades meat preparation","size":65415},
+        {"name":"oils vinegars","size":256086},
+        {"name":"pickled goods olives","size":117521},
+        {"name":"preserved dips spreads","size":113879},
+        {"name":"salad dressing toppings","size":104050},
+        {"name":"spices seasonings","size":221371},
+        {"name":"spreads","size":301502}
+      ]
+    },
+    {
+      "name":"personal care",
+      "children":[
+        {"name":"beauty","size":6455},
+        {"name":"body lotions soap","size":42905},
+        {"name":"cold flu allergy","size":27407},
+        {"name":"deodorants","size":15673},
+        {"name":"digestion","size":28078},
+        {"name":"eye ear care","size":9522},
+        {"name":"facial care","size":12915},
+        {"name":"feminine care","size":20801},
+        {"name":"first aid","size":11411},
+        {"name":"hair care","size":33482},
+        {"name":"muscles joints pain relief","size":19580},
+        {"name":"oral hygiene","size":66819},
+        {"name":"protein meal replacements","size":38211},
+        {"name":"shave needs","size":10876},
+        {"name":"skin care","size":10698},
+        {"name":"soap","size":66832},
+        {"name":"vitamins supplements","size":47028}
+      ]
+    },
+    {
+      "name":"pets",
+      "children":[
+        {"name":"cat food care","size":66306},
+        {"name":"dog food care","size":35915}
+      ]
+    },
+    {
+      "name":"produce",
+      "children":[
+        {"name":"fresh fruits","size":3792661},
+        {"name":"fresh herbs","size":393793},
+        {"name":"fresh vegetables","size":3568630},
+        {"name":"packaged produce","size":289488},
+        {"name":"packaged vegetables fruits","size":1843806}
+      ]
+    },
+    {
+      "name":"snacks",
+      "children":[
+        {"name":"candy chocolate","size":312020},
+        {"name":"chips pretzels","size":753739},
+        {"name":"cookies cakes","size":244045},
+        {"name":"crackers","size":478430},
+        {"name":"energy granola bars","size":473835},
+        {"name":"fruit vegetable snacks","size":182498},
+        {"name":"ice cream toppings","size":11706},
+        {"name":"mint gum","size":23626},
+        {"name":"nuts seeds dried fruit","size":319019},
+        {"name":"popcorn jerky","size":170441},
+        {"name":"trail mix snack mix","size":37053}
+      ]
+    }
+    ]}
