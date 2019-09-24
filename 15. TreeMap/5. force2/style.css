@@ -1,0 +1,17 @@
+body{
+    background: #9bbcd4;
+}
+
+.node circle {
+    cursor: grabbing;
+    stroke: #5231bd;
+    stroke-width:1px;
+  }
+  
+ 
+  
+  line.link {
+    fill: none;
+    stroke: #4a27e7;
+    stroke-width: 1px;
+  }
