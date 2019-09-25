@@ -104,6 +104,7 @@ function arcTween(d) {
 }
 
 function getData() {
+
     return {
  "name": "Root",
  "children": [
@@ -138,4 +139,5 @@ function getData() {
     }
    ]
   }
-};
+
+  }
