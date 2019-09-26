@@ -1,5 +1,5 @@
-var width = 500,
-  height = 500,
+var width = 700,
+  height = 800,
   radius = Math.min(width, height) / 2;
 
 var x = d3.scale.linear().range([0, 2 * Math.PI]);
@@ -106,35 +106,39 @@ function arcTween(d) {
 function getData() {
 
     return {
- "name": "Root",
+ "name": "חייקה וצבי פרוסט",
  "children": [
   {
-   "name": "A1",
+   "name": "יגאל",
    "children": [
-      {"name": "B1", "size": 30},
-      {"name": "B2", "size": 40},
-      {"name": "B3",
-	"children":[
-	    {"name": "C1", "size": 10},
-            {"name": "C2", "size": 15}
-	]
-       }
-     ]
-    },
-    {
-     "name": "A2",
+      {"name": "ינון", "size": 52},
+      {"name": "צפריר", "size": 49},
+      {"name": "יאיר","size": 45},
+      {"name": "יפתח","size": 39}	]
+   },  
+        
+   { 
+     "name": "ורדה",
      "children": [
-      {"name": "B4", "size": 40},
-      {"name": "B5", "size": 30},
-      {"name": "B6", "size": 10}
+      {"name": "ענבל", "size": 54},
+      {"name": "מעין", "children": [
+        {"name": "איה", "size": 23},
+        {"name": "מיקה", "size": 18},
+        {"name": "יונתן","size": 13},
+          ]},{"name": "מעוז","children": [
+            {"name": "עתליה", "size": 15},
+            {"name": "אבישג", "size": 13},
+            {"name": "מיכאלה","size": 12},
+              ]}, {"name": "ערד","children": [
+                {"name": "דן", "size": 10},
      ]
-    },
+    }]},
     {
-     "name": "A3",
+     "name": "אברהם",
      "children": [
-      {"name": "B7", "size": 50},
-      {"name": "B8", "size": 15}
-	
+      {"name": "איתמר", "size": 39},
+      {"name": "עמיחי", "size": 37},
+      {"name": "טל", "size": 34}
      ]
     }
    ]
