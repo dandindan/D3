@@ -91,8 +91,8 @@ text.append('textPath')
     .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
     .text(d => d.data.name)
     .style('fill', 'none')
-    .style('stroke', '#fff')
-    .style('stroke-width', 5)
+    .style('stroke', '#ddd')
+    .style('stroke-width', 2)
     .style('stroke-linejoin', 'round');
 
 text.append('textPath')
