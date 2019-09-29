@@ -29,6 +29,7 @@ nav .up {
 
 nav .up:hover {
   background-color: rgba(184, 20, 48, 0.8);
+  color: #000;
 }
 
 .feature {
@@ -77,7 +78,7 @@ nav .up:hover {
 }
 
 .node:hover .label {
-  color: white;
+  color: #000000;
 }
 
 .node.level-0 {

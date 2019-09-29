@@ -24,6 +24,7 @@ nav {
 		cursor: pointer;
 		&:hover {
 			background-color: hsla(350,80,40,.8);
+			color:#000;
 		}
 	}
 }
@@ -64,10 +65,10 @@ nav {
 		}
 	}
 	&:hover {
-		//background-color: #222 !important;
-		//opacity: 1;
+		// background-color: #222 !important;
+		// opacity: 1;
 		.label {
-			color: hsla(0,0,100,1);
+			color: #000000;
 		}
 	}
 	&.level-0 {
