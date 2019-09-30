@@ -5,7 +5,7 @@ var yscale = d3.scale.linear().range([0, chartHeight]);
 var color = d3.scale.category10();
 var headerHeight = 20;
 var headerColor = "#555555";
-var transitionDuration = 500;
+var transitionDuration = 1000;
 var root;
 var node;
 var treemap = d3.layout.treemap()
