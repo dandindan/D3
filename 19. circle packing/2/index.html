@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <title>Zoomable Circle Packing</title>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32854293-1']);
+      _gaq.push(['_trackPageview']);
+      (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <style>
+      .node {
+        cursor: pointer;
+      }
+      .node:hover {
+        stroke: #000;
+        stroke-width: 1.5px;
+      }
+      .node--leaf {
+        fill: #fff;
+      }
+      .label {
+        font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-anchor: middle;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+      }
+      .label,
+      .node--root,
+      .node--leaf {
+        pointer-events: none;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand"><a href="./">Repair Data Visualisation</a><br />Zoomable Circle Packing<br /></h3><br />
+        </div>
+      </header>
+
+      <main role="main" class="">
+        <svg width="960" height="960"><g transform="translate(1,1)"></g></svg>
+      </main>
+    </div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="./js/init.js"></script>
+    <script>
+
+      /**
+       * References
+       * https://bl.ocks.org/mbostock/ca5b03a33affa4160321
+       * https://observablehq.com/@d3/zoomable-circle-packing
+       * https://observablehq.com/@d3/zoomable-circle-packing/forks
+       */
+
+      var svg = d3.select("svg"),
+              margin = 20,
+              diameter = +svg.attr("width"),
+              g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+
+      var color1 = d3.scaleOrdinal()
+              .domain(['Fixed', 'Repairable', 'End of life', 'Unknown', ])
+              .range(['#4caf50', '#03a9f4', '#e91e63', '#9a67ea']);
+
+      var color2 = d3.scaleOrdinal()
+              .range(['#c8b900', '#ffff72']);
+
+      var format = d3.format(",d");
+
+      var pack = d3.pack()
+              .size([diameter - margin, diameter - margin])
+              .padding(2);
+
+      function draw(root) {
+
+        pack(root);
+
+        var focus = root,
+                nodes = pack(root).descendants(),
+                view;
+        var circle = g.selectAll("circle")
+                .data(nodes)
+                .enter().append("circle")
+                .attr("class", function (d) {
+                  return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root";
+                })
+                .style("fill", function (d) {
+                  return keyColor(d);
+                })
+                .on("click", function (d) {
+                  if (focus !== d)
+                    zoom(d), d3.event.stopPropagation();
+                });
+        var text = g.selectAll("text")
+                .data(nodes)
+                .enter().append("text")
+                .attr("class", "label")
+                .style("fill-opacity", function (d) {
+                  return d.parent === root ? 1 : 0;
+                })
+                .style("display", function (d) {
+                  return d.parent === root ? "inline" : "none";
+                })
+                .style("font-size", function (d) {
+                  switch (d.depth) {
+                    case 0:
+                      return 16;
+                      break;
+                    case 1:
+                    case 2:
+                      return 14;
+                      break;
+                    case 3:
+                      return 12;
+                      break;
+                    default:
+                      return 12;
+                  }
+                })
+                .text(function (d) {
+                  if (!d.parent) {
+                    return '';
+                  }
+                  return format(d.value) + "\n" + d.data.key;
+                });
+
+        var node = g.selectAll("circle,text")
+                .on("mouseover", hovered(true))
+                .on("mouseout", hovered(false));
+
+        node.append("title")
+                .text(function (d) {
+                  if (!d.parent) {
+                    return '';
+                  }
+                  return d.data.key + "\n" + format(d.value);
+                });
+
+        svg.on("click", function () {
+          zoom(root);
+        });
+        zoomTo([root.x, root.y, root.r * 2 + margin]);
+
+        function zoom(d) {
+          var focus0 = focus;
+          focus = d;
+          var transition = d3.transition()
+                  .duration(d3.event.altKey ? 7500 : 750)
+                  .tween("zoom", function (d) {
+                    var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
+                    return function (t) {
+                      zoomTo(i(t));
+                    };
+                  });
+          transition.selectAll("text")
+                  .filter(function (d) {
+                    return d.parent === focus || this.style.display === "inline";
+                  })
+                  .style("fill-opacity", function (d) {
+                    return d.parent === focus ? 1 : 0;
+                  })
+                  .on("start", function (d) {
+                    if (d.parent === focus)
+                      this.style.display = "inline";
+                  })
+                  .on("end", function (d) {
+                    if (d.parent !== focus)
+                      this.style.display = "none";
+                  });
+        }
+
+        function zoomTo(v) {
+          var k = diameter / v[2];
+          view = v;
+          node.attr("transform", function (d) {
+            return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")";
+          });
+          circle.attr("r", function (d) {
+            return d.r * k;
+          });
+          node.on("mouseover", hovered(true))
+                  .on("mouseout", hovered(false));
+          node.append("title")
+                  .text(function (d) {
+                    if (!d.parent) {
+                      return '';
+                    }
+                    return d.data.key + "\n" + format(d.value);
+                  });
+        }
+
+        function hovered(hover) {
+          return function (d) {
+            d3.selectAll(d.ancestors().map(function (d) {
+              return d.node;
+            })).classed("node--hover", hover);
+          };
+        }
+      }
+
+      function keyColor(d) {
+        switch (d.depth) {
+          case 2 :
+            return color1(d.data.key);
+            break;
+          case 3 :
+            return color2(d.depth);
+            break;
+          case 4 :
+            return color2(d.depth);
+            break;
+          default:
+            return '#555';
+        }
+      }
+
+    </script>
+  <!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+</html>
