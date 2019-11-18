@@ -1,0 +1,13 @@
+#dropZone {
+    width: 500px;
+    height: 200px;
+    padding: 50px;
+    margin: 20px;
+    color: blanchedalmond;
+    text-align: center;
+    align-content: center;
+    background-color: blue;
+    stroke: darkcyan;
+    stroke-width: 5px;
+    border: 5px dashed rgb(183, 10, 206);
+}
