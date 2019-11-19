@@ -24947,8 +24947,8 @@
           {
              "!!SBtab TableType='Proteomaps' Organism='hsa' ProteinIdentifier='http://identifiers.org/uniprot/'": "Q9P2K8\t12740778.0\t0.896856665546\t21009543000.0\t2.61365144148\t1649.0\tEif2ak4\tK08860\tProtein processing in endoplasmic reticulum"
           },
-          {
-             "!!SBtab TableType='Proteomaps' Organism='hsa' ProteinIdentifier='http://identifiers.org/uniprot/'": "Q9P2L0\t50980069.0\t3.58862030974\t17843024000.0\t2.21972678787\t350\t\t\t"
+          {entifier='ht
+             "!!SBtab TableType='Proteomaps' Organism='hsa' ProteinIdtp://identifiers.org/uniprot/'": "Q9P2L0\t50980069.0\t3.58862030974\t17843024000.0\t2.21972678787\t350\t\t\t"
           },
           {
              "!!SBtab TableType='Proteomaps' Organism='hsa' ProteinIdentifier='http://identifiers.org/uniprot/'": "Q9P2M7\t18536044.0\t1.30480058708\t22298861000.0\t2.77404654619\t1203.0\tCgn\tK06102\tTight junction"
