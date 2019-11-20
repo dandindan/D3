@@ -16,7 +16,7 @@
 
         <script>
           const color = d3.scaleOrdinal(d3.schemePaired);
-          fetch('hsa.json').then(res => res.json()).then(data => {
+          fetch('hsa_Back.json').then(res => res.json()).then(data => {
             const t = CirclePack()
               .data(data)
               .label('!ProteinName')
